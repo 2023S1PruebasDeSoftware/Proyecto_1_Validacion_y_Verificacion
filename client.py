@@ -9,4 +9,5 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
         message = input('Escribe un mensaje: ')
         s.sendall(message.encode())
         data = s.recv(1024)
+        print("hola")
         print('Respuesta del servidor:', data.decode())
