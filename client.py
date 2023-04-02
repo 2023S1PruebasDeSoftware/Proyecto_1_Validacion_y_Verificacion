@@ -1,5 +1,5 @@
 import socket
-
+print("Corriendo cliente...")
 HOST = '25.72.66.152'  # Dirección IP del servidor
 PORT = 12345  # Puerto en el que escucha el servidor
 
