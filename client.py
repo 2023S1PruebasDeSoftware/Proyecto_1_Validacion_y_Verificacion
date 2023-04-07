@@ -1,5 +1,6 @@
 import socket
 import re
+
 from datetime import date
 from datetime import datetime
 
@@ -14,7 +15,7 @@ logs = ""
 
 running = True
 IpIsValid = False
-
+ 
 while running and not IpIsValid:
     HOST = input("IP servidor: ")
     match = re.findall(r"[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}", HOST)
