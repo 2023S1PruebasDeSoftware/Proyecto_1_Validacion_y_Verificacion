@@ -1,27 +1,34 @@
 import socket
 import re
-
 from datetime import date
 from datetime import datetime
+from encryption import encryption
+import os
 
 today = date.today()
 now = datetime.now()
 
 timeFormat = str(now.hour)+":"+str(now.minute)+":"+str(now.second)
 
-file = open("Logs_Client_"+str(today)+"_"+str(now.hour) +
-            str(now.minute)+str(now.second)+".txt", "w")
+logs_folder_path = "./logs"
+logs_filename = "Logs_Client_" + \
+    str(today)+"_"+str(now.hour)+str(now.minute)+str(now.second)+".txt"
+if not os.path.exists(logs_folder_path):
+    os.makedirs(logs_folder_path)
+logs_file_path = os.path.join(logs_folder_path, logs_filename)
+file = open(logs_file_path, "w")
+
 logs = ""
 
 running = True
 IpIsValid = False
- 
+
 while running and not IpIsValid:
     HOST = input("IP servidor: ")
     match = re.findall(r"[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}", HOST)
     if (len(match) < 1 and HOST != "localhost"):
         logs += timeFormat+" Warning: Dirección IP ingresada no es válida\n"
-        print("Dirección IP no válida")
+        print("IP no valida")
     else:
         logs += timeFormat+" Info: Dirección IP ingresada es válida\n"
         IpIsValid = True
@@ -39,9 +46,9 @@ while running and not IpIsValid:
                     s.connect((HOST, PORT))
                     logs += timeFormat + \
                         " Info: Conexión establecida con éxito \n"
-                    print("Conexión establecida con éxito")
                     while True:
                         message = input('Escribe un mensaje: ')
+                        message = encryption(message, "encrypt")
                         s.sendall(message.encode())
                         logs += timeFormat + \
                             " Info: Mensaje enviado \n"
@@ -50,7 +57,8 @@ while running and not IpIsValid:
                             break
                         logs += timeFormat + \
                             " Info: Mensaje recibido \n"
-                        print('Respuesta del servidor:', data.decode())
+                        print('Respuesta del servidor:', encryption(
+                            data.decode(), "decrypt"))
                 except Exception as e:
                     if intento < 3:
                         print("Error al conectarse con el servidor.")
