@@ -21,7 +21,7 @@ while running and not IpIsValid:
     match = re.findall(r"[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}", HOST)
     if (len(match) < 1 and HOST != "localhost"):
         logs += timeFormat+" Warning: Dirección IP ingresada no es válida\n"
-        print("IP no valida")
+        print("Dirección IP no válida")
     else:
         logs += timeFormat+" Info: Dirección IP ingresada es válida\n"
         IpIsValid = True
@@ -39,6 +39,7 @@ while running and not IpIsValid:
                     s.connect((HOST, PORT))
                     logs += timeFormat + \
                         " Info: Conexión establecida con éxito \n"
+                    print("Conexión establecida con éxito")
                     while True:
                         message = input('Escribe un mensaje: ')
                         s.sendall(message.encode())
