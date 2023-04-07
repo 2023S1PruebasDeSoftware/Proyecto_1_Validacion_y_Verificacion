@@ -42,4 +42,4 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
 logs += timeFormat + \
     " Info: El programa fue finalizado.  \n"
 file.write(logs)
-print("Programa finalizado.")
+print("El Programa ha finalizado.")
