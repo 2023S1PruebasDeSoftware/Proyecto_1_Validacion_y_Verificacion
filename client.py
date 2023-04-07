@@ -39,7 +39,7 @@ while running and not IpIsValid:
                     s.connect((HOST, PORT))
                     logs += timeFormat + \
                         " Info: Conexión establecida con éxito \n"
-                    print("Conexión establecida con éxito")
+                    print("Conexión establecida con éxito.")
                     while True:
                         message = input('Escribe un mensaje: ')
                         s.sendall(message.encode())
