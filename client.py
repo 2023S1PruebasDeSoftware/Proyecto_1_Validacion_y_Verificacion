@@ -20,21 +20,21 @@ while running and not IpIsValid:
     match = re.findall(r"[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}", HOST)
     if (len(match) < 1 and HOST != "localhost"):
         logs += timeFormat+" Warning: Dirección IP ingresada no es válida\n"
-        print("IP no valida")
+        print("Dirección IP no válida, ingrese otra por favor...")
     else:
         logs += timeFormat+" Info: Dirección IP ingresada es válida\n"
         IpIsValid = True
         PORT = 12345  # Puerto en el que escucha el servidor
         with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
             logs += timeFormat+" Info: Intentado conectar con IP:" + \
-                str(HOST)+" Puerto:12345"+"\n"
+                str(HOST)+" Puerto: 12345"+"\n"
             for intento in range(1, 4):
                 try:
                     logs += timeFormat + \
-                        " Info: (Intento #" + str(intento) + \
-                        ") Conectandose con el servidor..."+"\n"
-                    print("(Intento #" + str(intento) +
-                          ") Conectandose con el servidor...")
+                        " Info: [Intento #" + str(intento) + \
+                        "] Conectandose con el servidor..."+"\n"
+                    print("[(]Intento #" + str(intento) +
+                          "] Conectandose con el servidor...")
                     s.connect((HOST, PORT))
                     logs += timeFormat + \
                         " Info: Conexión establecida con éxito \n"
