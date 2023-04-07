@@ -1,6 +1,7 @@
 import socket
 from datetime import date
 from datetime import datetime
+
 print("El servidor se encuentra en ejecución...")
 HOST = 'localhost'  # Dirección IP del servidor #25.72.66.152
 PORT = 12345  # Puerto en el que escuchará el servidor
