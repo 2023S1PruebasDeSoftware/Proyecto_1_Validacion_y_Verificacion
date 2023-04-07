@@ -1,0 +1,13 @@
+16:5:15 Info: Dirección IP ingresada es válida
+16:5:15 Info: Intentado conectar con IP:localhost Puerto:12345
+16:5:15 Info: (Intento #1) Conectandose con el servidor...
+16:5:15 Info: Conexión establecida con éxito 
+16:5:15 Info: Mensaje enviado 
+16:5:15 Info: Mensaje recibido 
+16:5:15 Info: Mensaje enviado 
+16:5:15 Info: Mensaje recibido 
+16:5:15 Info: Mensaje enviado 
+16:5:15 Info: (Intento #2) Conectandose con el servidor...
+16:5:15 Warning: Error al conectarse con el servidor. 
+16:5:15 Info: (Intento #3) Conectandose con el servidor...
+16:5:15 Warning: No se pudo conectar con el servidor.  

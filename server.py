@@ -10,18 +10,20 @@ now = datetime.now()
 
 timeFormat = str(now.hour)+":"+str(now.minute)+":"+str(now.second)
 
-file = open("Logs_"+str(today)+".txt","w")
+file = open("Logs_Server_"+str(today)+"_"+str(now.hour) +
+            str(now.minute)+str(now.second)+".txt", "w")
 logs = ""
-with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:  
+with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
     try:
         s.bind((HOST, PORT))
-        s.listen()  
-        logs += timeFormat+" Info: Servidor esperando conexión.\n"     
+        s.listen()
+        logs += timeFormat+" Info: Servidor esperando conexión.\n"
         print("Servidor esperando conexión...")
-        
+
         conn, addr = s.accept()
         with conn:
-            logs += timeFormat+" Info: Conexión establecida con: "+str(addr)+"\n"
+            logs += timeFormat + \
+                " Info: Conexión establecida con: "+str(addr)+"\n"
             print('Conexión establecida con:', addr)
             while True:
                 logs += timeFormat+" Info: Mensaje recibido.\n"
@@ -36,5 +38,7 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
 
     except Exception as e:
         logs += timeFormat+" Warning: Se ha perdido la conexión.\n"
+logs += timeFormat + \
+    " Info: El programa fue finalizado.  \n"
 file.write(logs)
 print("Programa finalizado.")
